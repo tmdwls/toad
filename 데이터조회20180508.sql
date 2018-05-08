@@ -16,6 +16,9 @@ AND YEARWEEK BETWEEN 201501 AND 201503
 ORDER BY YEARWEEK DESC;
 
 
+
+--case when
+--Not Avaulable -> Male -> Female
 select A.*,
        --LOWER(소문자변화) UPPER(대문자 변화)--
        CASE WHEN LOWER(A.gender) = 'Not Avaulable'
@@ -28,12 +31,16 @@ order by sort_order;
 --뒤에 desc 내림차순 //asc 오름차순--디폴트는 오름차순
 
 
+
+
 select 
        REGIONID
      , PRODUCTGROUP
      , YEARWEEK
 from KOPO_PRODUCT_VOLUME
 order by YEARWEEK;
+
+
 
 
 --UNION(합집합)--
@@ -48,6 +55,8 @@ WHERE PRODUCTGROUP = 'ST0002';
 
 
 
+
+
 --INTERSECT(교집합)--
 SELECT YEARWEEK
 FROM KOPO_PRODUCT_VOLUME
@@ -56,6 +65,8 @@ INTERSECT
 SELECT YEARWEEK
 FROM KOPO_PRODUCT_VOLUME
 WHERE PRODUCTGROUP = 'ST0002';
+
+
 
 
 -- MINUS (차집합)
