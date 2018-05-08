@@ -156,8 +156,9 @@ select substr('201642',1,4) from dual;
 --42
 select substr('201642',5,6) from dual;
 --from dual : 단일행 조회 할때 쓰임 
-
 ---------------------------------------
+
+
 
 
 -- 컬럼 값 채우기---------------------
@@ -166,9 +167,16 @@ select lpad('UN42F6000', 15, 'a') from dual;
 
 select * from KOPO_CUSTOMERDATA;
 
+--LPAD
 select
 LPAD(CUSTOMERCODE, 12, '*')
 FROM KOPO_CUSTOMERDATA;
+--CUSTOMERCODE를 12자리로 하고 12자리가 안되면 왼쪽으로 *로 채움
 
+--RPAD
+select
+RPAD(CUSTOMERCODE, 12, '*')
+FROM KOPO_CUSTOMERDATA;
+--CUSTOMERCODE를 12자리로 하고 12자리가 안되면 오른쪽으로 *로 채움
 ------------------------------------------
 
