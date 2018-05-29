@@ -91,12 +91,19 @@ SELECT * FROM CUSTOMERDATA ;
 
 
 
-
-
 CREATE TABLE 
 RMSE_MAE_ST_PSJ as
     Select
     ROUND(1-ABS((FCST-ACTUAL)/FCST),4)*100 as ACCURACY
     FROM RMSE_MAE_EXAMPLE2;
- 
+    
+    
+SELECT a.*,
+case when substr(CUSTID,1,1)='A' then 1
+     when substr(CUSTID,1,1)='B' then 0
+     when substr(CUSTID,1,1)='C' then 2
+     else 3 end as newOrder
+     from CUSTOMERDATA a
+     order by newOrder;
+     
 
