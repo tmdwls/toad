@@ -1,5 +1,30 @@
-select * from KOPO_CUSTOMERDATA;
 
+--1. 주요함수-----------------------------------------------------------------
+
+-- 대/소문자 변경하기  UPPER(소문자 -> 대문자),  LOWER(대문자 -> 소문자)
+SELECT 
+   UPPER(PRODUCT) AS CASE1,
+   LOWER(PRODUCT) AS CASE2
+FROM KOPO_CHANNEL_SEASONALITY_NEW;
+-------------------------------------------------------------------------------
+-- 컬럼 값 합치기 CONCAT(컬럼명,컬럼명)-----------------------------------------
+SELECT 
+    CONCAT(REGIONID,CONCAT('_',PRODUCT)) AS KEYCOL1,
+    REGIONID||'_'||PRODUCT AS KEYCOL2
+FROM KOPO_CHANNEL_SEASONALITY_NEW;
+--------------------------------------------------------------------------------
+-- 컬럼 값 추출하기 SUBSTR(‘문자열’ OR 컬럼명, 시작인덱스, 종료인덱스)----------
+SELECT 
+    PRODUCT,
+    SUBSTR(PRODUCT,1,7)
+FROM KOPO_CHANNEL_SEASONALITY_NEW;
+-------------------------------------------------------------------------------
+-- 컬럼 값 채우기 LPAD(컬럼명, 자릿수, ‘붙일문자‘)-----------------------------
+SELECT 
+LPAD(PRODUCT, 10, ‘0’)
+FROM KOPO_CHANNEL_SEASONALITY_NEW;
+-------------------------------------------------------------------------------
+select * from KOPO_CUSTOMERDATA;
 select
     LPAD(CUSTOMERCODE, 10, '0'),
     SUBSTR(LPAD(CUSTOMERCODE, 10, '0'), -4),
@@ -7,6 +32,8 @@ select
                 ,SUBSTR(LPAD(CUSTOMERCODE, 10, '0'), -4)
                 ,'****')
 from KOPO_CUSTOMERDATA;
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 select 
