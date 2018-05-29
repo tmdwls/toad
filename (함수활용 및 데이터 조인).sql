@@ -57,24 +57,20 @@ GROUP BY REGIONID, PRODUCT                                              --
 HAVING AVG(QTY) > 10000;                                                --
 --------------------------------------------------------------------------
 
---예제 : RMSE_MAE_EXAMPLE 테이블을 활용하여 ITEM별 RMSE를 구하세요 -------
+--예제 : RMSE_MAE_EXAMPLE 테이블을 활용하여 ITEM별 RMSE를 구하세요 -------      
 SELECT * FROM RMSE_MAE_EXAMPLE;
-
 SELECT 
     ITEM,
     SQRT(AVG(POWER(ABS(QTY-PREDICTION),2))) as RMSE
 FROM RMSE_MAE_EXAMPLE
 GROUP BY ITEM ;
-    
-
-
-
+--------------------------------------------------------------------------     
 SELECT 
     a.*,
     abs(QTY-PREDICTION)as ERROR,
     POWER(abs(QTY-PREDICTION),2) as ERROR_POW
  --   AVG(POWER(abs(QTY-PREDICTION),2))  
-FROM RMSE_MAE_EXAMPLE a
+FROM RMSE_MAE_EXAMPLE a;
 
 
 
