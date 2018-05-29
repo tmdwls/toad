@@ -13,17 +13,20 @@ SELECT
     REGIONID||'_'||PRODUCT AS KEYCOL2
 FROM KOPO_CHANNEL_SEASONALITY_NEW;
 --------------------------------------------------------------------------------
+
 -- 컬럼 값 추출하기 SUBSTR(‘문자열’ OR 컬럼명, 시작인덱스, 종료인덱스)----------
 SELECT 
     PRODUCT,
     SUBSTR(PRODUCT,1,7)
 FROM KOPO_CHANNEL_SEASONALITY_NEW;
 -------------------------------------------------------------------------------
+
 -- 컬럼 값 채우기 LPAD(컬럼명, 자릿수, ‘붙일문자‘)-----------------------------
 SELECT 
 LPAD(PRODUCT, 10, ‘0’)
 FROM KOPO_CHANNEL_SEASONALITY_NEW;
 -------------------------------------------------------------------------------
+
 --예제 : KOPO_CUSTOMERDATA 테이블 에서 CUSTOMERCODE를 12자리로 조회하세요
 --       단, 12자리가 안될경우 앞에 ‘*’로 채우세요
 select * from KOPO_CUSTOMERDATA;
@@ -140,13 +143,11 @@ RMSE_MAE_ST_PSJ as
     
 --CASE : 조건에 맞는경우 WHEN절 값으로 치환
 
--- 조건문
+-- 조건문-----------------------------------------------------------------------
 --CASE 조건 WHEN 결과1 THEN 출력1
 --              WHEN 결과2 THEN 출력2
 --              ELSE 출력3
 --END “컬럼명＂
-
-
 SELECT a.*,
 case when substr(CUSTID,1,1)='A' then 1
      when substr(CUSTID,1,1)='B' then 0
@@ -154,5 +155,5 @@ case when substr(CUSTID,1,1)='A' then 1
      else 3 end as newOrder
      from CUSTOMERDATA a
      order by newOrder;
-     
+--------------------------------------------------------------------------------
 
