@@ -45,7 +45,7 @@ SELECT                                                                  --
     MIN(QTY)                                                            --
 FROM KOPO_CHANNEL_SEASONALITY_NEW                                       --
 GROUP BY REGIONID, PRODUCT                                              --
-HAVING MIN(QTY) > 2000;                                                 --
+HAVING MIN(QTY) > 2000;--특정 조건만 만족하는 값을 구하기 위해 HAVING절을 사용
 --------------------------------------------------------------------------
 SELECT                                                                  --
     REGIONID,                                                           --
@@ -68,14 +68,23 @@ GROUP BY ITEM ;
 SELECT 
     a.*,
     abs(QTY-PREDICTION)as ERROR,
-    POWER(abs(QTY-PREDICTION),2) as ERROR_POW
+    SQRT(POWER(abs(QTY-PREDICTION),2)) as ERROR_POW
  --   AVG(POWER(abs(QTY-PREDICTION),2))  
 FROM RMSE_MAE_EXAMPLE a;
 
 
+select * from  RMSE_MAE_EXAMPLE_STEP2;
 
-
-
-
+--------------------------------------------------------------------------
+--테이블 수정후 테이블 생성 
+--CREATE TABLE "새로운 테이블 명" as(select~~from~)
+create table RMSE_MAE_EXAMPLE_STEP2_박승진_1 as( 
+SELECT 
+    ITEM,
+    AVG(abs(QTY-PREDICTION)) as ERROR
+FROM RMSE_MAE_EXAMPLE_STEP2
+GROUP by ITEM
+);
+--------------------------------------------------------------------------
 
 
