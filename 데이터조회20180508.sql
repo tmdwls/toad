@@ -21,11 +21,11 @@ ORDER BY YEARWEEK DESC;
 --Not Avaulable -> Male -> Female
 select A.*,
        --LOWER(소문자변화) UPPER(대문자 변화)--
-       CASE WHEN LOWER(A.gender) = 'Not Avaulable'
-       then 0
-       when UPPER(A.gender) = 'MALE'
-       then 1
-       else 2 end as sort_order
+       CASE 
+       WHEN LOWER(A.gender) = 'Not Avaulable' then 0
+       when UPPER(A.gender) = 'MALE' then 1
+       else 2 
+       end as sort_order
 from kopo_customerdata A
 order by sort_order;
 --뒤에 desc 내림차순 //asc 오름차순--디폴트는 오름차순
