@@ -77,6 +77,7 @@ select
 CREATE TABLE KOPO_ST_¹Ú½ÂÁø_FINAL6 as(
 select * from KOPO_ST_¹Ú½ÂÁø_FINAL5
 PIVOT(
+
     SUM(RATIO)
     FOR WEEK IN('01' W01,'02' W02,'03' W03,'04' W04,'05' 
     W05,'06' W06,'07' W07,'08' W08,'09' W09,'10' W10)
